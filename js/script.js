@@ -50,6 +50,8 @@ for (let i = 0; i < randomNumbers.length; i++) {
 form.addEventListener('submit', (event) => {
     event.preventDefault();
     event.preventDefault();
+    const userChoice = [];
+    const inputs = form.querySelector("input")
 
 
 
