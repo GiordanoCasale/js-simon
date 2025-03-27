@@ -51,7 +51,14 @@ form.addEventListener('submit', (event) => {
     event.preventDefault();
     event.preventDefault();
     const userChoice = [];
-    const inputs = form.querySelector("input")
+    const inputs = form.querySelector("input");
+    
+    inputs.forEach(input){
+        const inputvalue = parseint(input.value);
+        if(!isNaN(inputvalue)){
+            userChoice.push(inputvalue);
+        }
+    }
 
 
 
