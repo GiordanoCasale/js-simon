@@ -2,9 +2,23 @@
 const countDown = document.getElementById("countdown")
 const numberList = document.getElementById("numbers-list")
 const form = document.getElementById("answers-form")
-const btn = document.querySelector("btn-primary")
+const btn = document.querySelector("button")
 const istructions = document.getElementById("instructions");
+//funzione per comparare gli array
+function compareArrays(answers, numbers) {
 
+    const result = [];
+    for (let i = 0; i < answers.length; i++) {
+        for (let j = 0; j < numbers.length; i++) {
+            if(answers[i]===numbers[j]){
+                result.push(answers[i]);
+                //andiamo ad rimuovere gli elementi trovati per evitare ripetizioni
+                numbers.splice(j, 1);
+            }
+        }
+    }
+    return result;
+}
 //andiamo a creare il countdown
 let time = 10;
 
@@ -21,14 +35,12 @@ const clock = setInterval(function () {
     }
 
 }, 1000);
-//andiamo a generare i 5 numeri randomici
-const random = Math.floor(Math.random() * 50) + 1;
+
 //andiamo a creare un generatore
 function generateNumbers(min, max) {
     const numbers = []
-    const arrayNumbers = 5
 
-    for (let i = 0; i < arrayNumbers; i++) {
+    for (let i = 0; i < 5; i++) {
         let random = Math.floor(Math.random() * (max - min + 1) + min);
         numbers.push(random);
     }
@@ -47,19 +59,29 @@ for (let i = 0; i < randomNumbers.length; i++) {
 }
 
 //Aggiustiamo il form
-form.addEventListener('submit', (event) => {
+btn.addEventListener('click', function (event) {
     event.preventDefault();
-    event.preventDefault();
-    const userChoice = [];
-    const inputs = form.querySelector("input");
-    
-    inputs.forEach(input){
-        const inputvalue = parseint(input.value);
-        if(!isNaN(inputvalue)){
-            userChoice.push(inputvalue);
-        }
+
+    const strongMemory = [];
+    for (let i = 0; i < 5; i++) {
+        strongMemory.push(document.querySelector(`input:nth-child(${i + 1})`).value)
+    }
+
+    istructions.innerHTML = "ciao"
+
+    const result= compareArrays(strongMemory, randomNumbers)
+    console.log(result)
+
+    if(result.length === 5){
+        istructions.innerHTML= "complimenti, hai indovinato tutti i numeri"
+    } else if(result.length === 0){
+        istructions.innerHTML= "non hai indovinato neanche un numero zi"
+    }else{
+        istructions.innerHTML= `hai indovinato ${result.length} su 5: ${result}`
     }
 
 
 
-})
+
+});
+
