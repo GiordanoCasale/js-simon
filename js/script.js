@@ -9,15 +9,15 @@ const istructions = document.getElementById("instructions");
 let time = 10;
 
 const clock = setInterval(function () {
-    if(time>0){
+    if (time > 0) {
         countDown.innerHTML = time;//ci restituisce il countdown su schermo
-        time--; 
-    }else{
+        time--;
+    } else {
         clearInterval(clock);
-        istructions.innertext = "inserisci i numeri che hai visto in precedenza"
-        form.classList.remove("d-none")
-        numberList.classList.add("d-none")
-        countDown.innerHTML = "tempo scaduto"
+        istructions.innertext = "inserisci i numeri che hai visto in precedenza";
+        form.classList.remove("d-none");
+        numberList.classList.add("d-none");
+        countDown.innerHTML = "tempo scaduto";
     }
 
 }, 1000);
@@ -45,3 +45,12 @@ for (let i = 0; i < randomNumbers.length; i++) {
     item.innerText = randomNumbers[i];
     numberList.appendChild(item);
 }
+
+//Aggiustiamo il form
+form.addEventListener('submit', (event) => {
+    event.preventDefault();
+    event.preventDefault();
+
+
+
+})
