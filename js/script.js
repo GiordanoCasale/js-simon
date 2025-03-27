@@ -9,8 +9,8 @@ function compareArrays(answers, numbers) {
 
     const result = [];
     for (let i = 0; i < answers.length; i++) {
-        for (let j = 0; j < numbers.length; i++) {
-            if(answers[i]===numbers[j]){
+        for (let j = 0; j < numbers.length; j++) {
+            if(answers[i]==numbers[j]){
                 result.push(answers[i]);
                 //andiamo ad rimuovere gli elementi trovati per evitare ripetizioni
                 numbers.splice(j, 1);
@@ -28,7 +28,7 @@ const clock = setInterval(function () {
         time--;
     } else {
         clearInterval(clock);
-        istructions.innertext = "inserisci i numeri che hai visto in precedenza";
+        istructions.innerText = "inserisci i numeri che hai visto in precedenza";
         form.classList.remove("d-none");
         numberList.classList.add("d-none");
         countDown.innerHTML = "tempo scaduto";
